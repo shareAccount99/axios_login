@@ -36,6 +36,7 @@
         </div>
         <div class="modal-footer justify-content-center">
           <p>Not a member? <a href="#">Create an account</a></p>
+          <a v-on:click="selectDiary">주소록</a>
         </div>
       </div>
     </div>
@@ -60,13 +61,22 @@ export default {
   methods: {
     submitForm:  function() {
       apiLogin.submitForm(this.userName, this.password).then((response) => {
-        consoel.log(response);
+        console.log("login정보",response)
       })
       .catch(function (e) {
         console.log(e);
         console.log("Adress를 호출하는 중 오류");
       });
-  }
+   },
+   selectDiary:  function() {
+        apiLogin.selectDiary().then((response) => {
+          console.log(response);
+        })
+        .catch(function (e) {
+          console.log(e);
+          console.log("Adress를 호출하는 중 오류");
+        });
+    }
 },
 };
 </script>
